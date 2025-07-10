@@ -8,13 +8,13 @@ import Empty from "@/components/ui/Empty";
 import ApperIcon from "@/components/ApperIcon";
 import { dealsService } from "@/services/api/dealsService";
 import { contactsService } from "@/services/api/contactsService";
-
+import CalendarTimeline from "@/components/organisms/CalendarTimeline";
 const DealPipeline = () => {
   const [deals, setDeals] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [view, setView] = useState('kanban');
   const loadData = async () => {
     try {
       setLoading(true);
@@ -52,6 +52,23 @@ const DealPipeline = () => {
     } catch (err) {
       toast.error("Failed to update deal stage");
     }
+};
+
+  const handleTimelineUpdate = async (dealId, updates) => {
+    try {
+      const deal = deals.find(d => d.Id === dealId);
+      if (!deal) return;
+
+      const updatedDeal = { ...deal, ...updates };
+      await dealsService.update(dealId, updatedDeal);
+      setDeals(prev => 
+        prev.map(d => d.Id === dealId ? updatedDeal : d)
+      );
+      
+      toast.success('Deal timeline updated');
+    } catch (err) {
+      toast.error('Failed to update deal timeline');
+    }
   };
 
   const getTotalPipelineValue = () => {
@@ -83,17 +100,43 @@ const DealPipeline = () => {
     return <Error message={error} onRetry={loadData} />;
   }
 
-  return (
+return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Deal Pipeline</h1>
           <p className="text-slate-400">Track deals through your sales process</p>
         </div>
-        <Button variant="primary">
-          <ApperIcon name="Plus" size={16} className="mr-2" />
-          Add Deal
-        </Button>
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center bg-surface border border-secondary rounded-lg p-1">
+            <button
+              onClick={() => setView('kanban')}
+              className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                view === 'kanban' 
+                  ? 'bg-primary text-white' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <ApperIcon name="Columns" size={16} className="mr-2" />
+              Kanban
+            </button>
+            <button
+              onClick={() => setView('calendar')}
+              className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                view === 'calendar' 
+                  ? 'bg-primary text-white' 
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <ApperIcon name="Calendar" size={16} className="mr-2" />
+              Calendar
+            </button>
+          </div>
+          <Button variant="primary">
+            <ApperIcon name="Plus" size={16} className="mr-2" />
+            Add Deal
+          </Button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -140,9 +183,11 @@ const DealPipeline = () => {
         </div>
       </div>
 
-      <div className="bg-surface border border-secondary rounded-lg p-6">
+<div className="bg-surface border border-secondary rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-white">Pipeline Overview</h2>
+          <h2 className="text-lg font-semibold text-white">
+            {view === 'kanban' ? 'Pipeline Overview' : 'Deal Timeline'}
+          </h2>
           <div className="flex items-center space-x-2">
             <Button variant="outline" size="sm">
               <ApperIcon name="Filter" size={16} className="mr-2" />
@@ -155,7 +200,7 @@ const DealPipeline = () => {
           </div>
         </div>
 
-        {deals.length === 0 ? (
+{deals.length === 0 ? (
           <Empty
             title="No deals in pipeline"
             description="Start by adding your first deal to track it through the sales process"
@@ -163,11 +208,17 @@ const DealPipeline = () => {
             actionLabel="Add First Deal"
             onAction={() => toast.info("Add deal feature coming soon!")}
           />
-        ) : (
+        ) : view === 'kanban' ? (
           <KanbanBoard
             deals={deals}
             contacts={contacts}
             onStageChange={handleStageChange}
+          />
+        ) : (
+          <CalendarTimeline
+            deals={deals}
+            contacts={contacts}
+            onTimelineUpdate={handleTimelineUpdate}
           />
         )}
       </div>
