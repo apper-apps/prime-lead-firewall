@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #020617;
+  color: #E2E8F0;
+}
+
+.Toastify__toast-container {
+  top: 1rem;
+  right: 1rem;
+}
+
+.Toastify__toast {
+  background: #0F172A;
+  color: #E2E8F0;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  min-height: 48px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Toastify__toast--success {
+  border-color: #10B981;
+}
+
+.Toastify__toast--error {
+  border-color: #EF4444;
+}
+
+.Toastify__toast--warning {
+  border-color: #F59E0B;
+}
+
+.Toastify__toast--info {
+  border-color: #06B6D4;
+}
+
+.Toastify__progress-bar {
+  background: #2563EB;
+}
+
+.Toastify__close-button {
+  color: #94A3B8;
+}
+
+.Toastify__close-button:hover {
+  color: #E2E8F0;
+}
+
+@layer base {
+  input, textarea, select {
+    @apply bg-surface border-secondary text-slate-200 placeholder-slate-400;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    @apply border-primary ring-1 ring-primary outline-none;
+  }
+}

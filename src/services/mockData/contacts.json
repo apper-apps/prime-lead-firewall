@@ -1,0 +1,98 @@
+[
+  {
+    "Id": 1,
+    "name": "John Smith",
+    "email": "john.smith@techcorp.com",
+    "company": "TechCorp Solutions",
+    "status": "Qualified",
+    "assignedRep": "Sarah Johnson",
+    "tags": ["Enterprise", "Hot Lead"],
+    "notes": "Interested in premium package. Decision maker confirmed.",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "lastActivity": "2024-01-18T14:20:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Emma Wilson",
+    "email": "emma.wilson@startupxyz.com",
+    "company": "StartupXYZ",
+    "status": "New",
+    "assignedRep": "Mike Davis",
+    "tags": ["Startup", "Y Combinator"],
+    "notes": "Founder of Y Combinator startup. Looking for scalable solution.",
+    "createdAt": "2024-01-16T09:15:00Z",
+    "lastActivity": "2024-01-16T09:15:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "David Chen",
+    "email": "david.chen@enterprise.com",
+    "company": "Enterprise Inc",
+    "status": "Working",
+    "assignedRep": "Sarah Johnson",
+    "tags": ["Enterprise", "Large Deal"],
+    "notes": "Multiple stakeholders involved. Proposal sent for review.",
+    "createdAt": "2024-01-10T11:45:00Z",
+    "lastActivity": "2024-01-17T16:30:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Lisa Rodriguez",
+    "email": "lisa.rodriguez@globaltech.com",
+    "company": "GlobalTech",
+    "status": "Contacted",
+    "assignedRep": "Alex Thompson",
+    "tags": ["Mid-Market", "International"],
+    "notes": "Responded to initial outreach. Scheduling discovery call.",
+    "createdAt": "2024-01-12T14:20:00Z",
+    "lastActivity": "2024-01-15T10:45:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Michael Brown",
+    "email": "michael.brown@innovate.com",
+    "company": "Innovate Corp",
+    "status": "Qualified",
+    "assignedRep": "Mike Davis",
+    "tags": ["SaaS", "Growth Stage"],
+    "notes": "Technical evaluation in progress. Strong buying intent.",
+    "createdAt": "2024-01-08T13:10:00Z",
+    "lastActivity": "2024-01-16T11:20:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Jennifer Taylor",
+    "email": "jennifer.taylor@futuretech.com",
+    "company": "FutureTech",
+    "status": "Unqualified",
+    "assignedRep": "Alex Thompson",
+    "tags": ["SMB", "Budget Constrained"],
+    "notes": "Budget too small for our minimum package. Referred to partner.",
+    "createdAt": "2024-01-14T15:30:00Z",
+    "lastActivity": "2024-01-14T16:45:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "Robert Kim",
+    "email": "robert.kim@nexustech.com",
+    "company": "Nexus Technologies",
+    "status": "New",
+    "assignedRep": "Sarah Johnson",
+    "tags": ["Enterprise", "Referral"],
+    "notes": "Referred by existing client. High priority prospect.",
+    "createdAt": "2024-01-17T08:45:00Z",
+    "lastActivity": "2024-01-17T08:45:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Amanda Foster",
+    "email": "amanda.foster@digitalpro.com",
+    "company": "DigitalPro",
+    "status": "Contacted",
+    "assignedRep": "Mike Davis",
+    "tags": ["Digital Agency", "Services"],
+    "notes": "Agency looking for white-label solution. Potential partnership.",
+    "createdAt": "2024-01-11T12:00:00Z",
+    "lastActivity": "2024-01-13T14:15:00Z"
+  }
+]
